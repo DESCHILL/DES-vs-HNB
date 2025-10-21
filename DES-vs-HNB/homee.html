@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop 68IT1 </title>
+  <link rel="stylesheet" href="home1.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <div>Giao hàng nhanh — Support: 1900 1234</div>
+      <div>Đăng nhập / Đăng ký</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container head-main">
+      <div class="logo"><div class="mark">SH</div><div>Shop68IT1</div></div>
+      <div class="search">
+        <input id="q" placeholder="Tìm điện thoại, laptop, linh kiện..." />
+        <button id="searchBtn">Tìm kiếm</button>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="favBtn">Yêu thích</button>
+        <button class="icon-btn" id="cartBtn">Giỏ (<span id="cartCount">0</span>)</button>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <div class="container menu">
+        <a href="#">iPhone</a>
+        <a href="#">Samsung</a>
+        <a href="#">Laptop</a>
+        <a href="#">Phụ kiện</a>
+        <a href="#">Tin tức</a>
+        <a href="#">Khuyến mãi</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hero">
+        <div class="hero-info">
+          <h1>Khuyến mãi lớn — Giảm đến 30% các mẫu hot</h1>
+          <p>Ưu đãi trong thời gian có hạn. Miễn phí giao hàng khi đơn trên 3 triệu.</p>
+          <a class="btn" href="#products">Mua ngay</a>
+        </div>
+      </div>
+      <div style="flex-basis:320px;display:flex;flex-direction:column;gap:12px">
+        <div class="cat">📱 Trả góp 0%</div>
+        <div class="cat">🚚 Giao nhanh trong ngày</div>
+        <div class="cat">🎁 Đổi trả 7 ngày</div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+        <h2>Sản phẩm nổi bật</h2>
+        <div>
+          <select id="sort">
+            <option value="popular">Phổ biến</option>
+            <option value="price-asc">Giá: thấp → cao</option>
+            <option value="price-desc">Giá: cao → thấp</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid" id="grid">
+        <!-- Product cards injected by JS -->
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div style="min-width:220px">
+          <h3>ShopClone</h3>
+          <p>Địa chỉ: 123 Đường Công nghệ — Hotline: 1900 1234</p>
+        </div>
+        <div>
+          <h4>Chính sách</h4>
+          <p>Đổi trả · Bảo hành · Thanh toán</p>
+        </div>
+        <div>
+          <h4>Theo dõi</h4>
+          <p>Facebook · Instagram · YouTube</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Modal quick view -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div>
+        <img id="modalImg" src="" alt="product">
+      </div>
+      <div style="flex:1">
+        <h3 id="modalTitle">Title</h3>
+        <p id="modalDesc">Description</p>
+        <div style="margin:10px 0"><span id="modalPrice" class="price">0₫</span> <span id="modalOld" class="old"></span></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="number" id="qty" value="1" min="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid #e6e9ee">
+          <button class="btn" id="addToCartModal">Thêm vào giỏ</button>
+        </div>
+        <div style="margin-top:14px"><button id="closeModal" class="icon-btn">Đóng</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart panel -->
+  <div class="cart-panel" id="cartPanel" style="display:none">
+    <h4>Giỏ hàng</h4>
+    <div class="cart-items" id="cartItems"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+      <strong>Tổng:</strong><strong id="cartTotal">0₫</strong>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:8px"><button class="btn" id="checkout">Thanh toán</button><button class="icon-btn" id="clearCart">Xóa</button></div>
+  </div>
+  <script src="home1.js"></script>
+</body>
+</html>
