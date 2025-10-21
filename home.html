@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShopDunk</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- =========================
+       CSS (PHẦN KIỂU)
+       ========================= -->
+  <style>
+    /* Biến toàn cục */
+    :root{
+      --nen:#f4f5f6;
+      --dam:#4a4a4d;
+      --accent:#0b74ff;
+      --muted:#9aa0a6;
+      --the:#fff;
+      --bo-tron:12px;
+      --container-max:1200px;
+      --bong: 0 8px 20px rgba(20,20,30,0.06);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      margin:0; background:var(--nen); color:#222;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Hộp chứa chính */
+    .khung{max-width:var(--container-max); margin:0 auto; padding:0 18px;}
+
+    /* ===== Thanh đầu (header) ===== */
+    .thanh-dau{background:linear-gradient(180deg,#575455,#4a4a4d); color:#fff; position:sticky; top:0; z-index:40}
+    .thanh-tren{display:flex; align-items:center; gap:20px; padding:14px 18px}
+    .thuong-hieu{display:flex; align-items:center; gap:12px}
+    .logo{font-weight:800; letter-spacing:1px; font-size:18px; background:#fff1; padding:8px 10px; border-radius:6px}
+    .dai-ly{font-size:12px; opacity:0.8}
+    .khung-tim-kiem{flex:1}
+    .khung-tim-kiem input{width:100%; padding:12px 18px; border-radius:24px; border:none; outline:none; font-size:15px}
+    .hanh-dong{display:flex; gap:8px}
+    .hanh-dong .nut{background:transparent; border:0; color:#fff; font-weight:600; display:flex; gap:8px; align-items:center}
+
+    /* NAV */
+    .danhmuc-chinh{background:transparent; padding:12px 18px}
+    .danhmuc-chinh ul{display:flex; gap:28px; list-style:none; padding:0; margin:0; align-items:center}
+    .danhmuc-chinh a{color:#eee; text-decoration:none; padding:6px 0; font-weight:600; opacity:0.95}
+
+    /* ===== Khung quảng cáo chính (hero) ===== */
+    .khu-quang-cao{padding:28px 0}
+    .trinh-chieu{position:relative; height:420px; border-radius:16px; overflow:hidden}
+    .trang-slide{position:absolute; inset:0; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; transition:opacity .6s ease, transform .6s ease; opacity:0; transform:scale(.98)}
+    .trang-slide.active{opacity:1; transform:scale(1)}
+    .trang-slide::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4))}
+    .noi-dung-slide{position:relative; color:#fff; text-align:center; max-width:900px; z-index:2}
+    .noi-dung-slide h1{font-size:44px; margin:0 0 8px; font-weight:800}
+    .noi-dung-slide p{margin:0 0 18px; font-size:18px}
+    .btn-chinh{display:inline-block; background:transparent; color:#fff; border:2px solid rgba(255,255,255,.2); padding:10px 18px; border-radius:28px; text-decoration:none; font-weight:700}
+
+    .nut-prev, .nut-next{position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.45); color:#fff; border:0; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer}
+    .nut-prev{left:18px}
+    .nut-next{right:18px}
+    .dau-cham{position:absolute; left:50%; transform:translateX(-50%); bottom:18px; display:flex; gap:8px}
+    .dau-cham button{width:8px; height:8px; border-radius:50%; border:0; background:rgba(255,255,255,0.35); cursor:pointer}
+    .dau-cham button.active{width:14px; border-radius:8px; background:var(--accent)}
+
+    /* ===== Nội dung chính ===== */
+    .noidung-chinh{padding:36px 0}
+    .khoi{margin-bottom:46px}
+    .khoi-dau{display:flex; justify-content:space-between; align-items:center; margin:0 0 18px}
+    .khoi-dau h2{font-size:28px; margin:0; text-align:center; flex:1}
+    .xem-tat-ca{color:var(--accent); text-decoration:none; font-weight:600}
+
+    /* Lưới sản phẩm */
+    .luoi-san-pham{display:grid; grid-template-columns:repeat(4,1fr); gap:26px}
+    .the-san-pham{background:var(--the); border-radius:var(--bo-tron); padding:18px; box-shadow:var(--bong); position:relative; overflow:hidden}
+    .the-san-pham .thumb{display:block; border-radius:8px; overflow:hidden; background:#fff; padding:8px}
+    .the-san-pham img{width:100%; display:block; object-fit:contain; height:200px}
+    .the-san-pham .tieu-de{font-weight:700; margin:14px 0 8px; font-size:16px}
+    .gia{display:flex; gap:10px; align-items:center}
+    .gia .hientai{color:var(--accent); font-weight:800}
+    .gia .cu{color:#9aa0a6; text-decoration:line-through}
+
+    .nhan{position:absolute; top:14px; left:14px; padding:6px 10px; border-radius:14px; font-weight:700; font-size:13px; color:#fff}
+    .nhan.moi{background:#1db954}
+    .nhan.giam{background:#d63f3f}
+
+    /* Tin tức */
+    .luoi-tin{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .the-tin{background:var(--the); padding:0; border-radius:12px; overflow:hidden; box-shadow:var(--bong)}
+    .the-tin img{width:100%; height:160px; object-fit:cover}
+    .the-tin h3{padding:16px 18px 8px; margin:0}
+    .the-tin time{display:block; padding:0 18px 18px; color:var(--muted)}
+
+    .can-giua{display:flex; justify-content:center; margin-top:16px}
+    .nut-bo-tron{background:transparent; border:2px solid #cfe6ff; padding:10px 20px; border-radius:12px; color:var(--accent); font-weight:700}
+
+    /* Footer */
+    .chan-trang{background:#1b1b1d; color:#ddd; padding:36px 0 20px}
+    .chan-trang .noi-chan{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:20px}
+    .chan-trang h4{color:#fff; margin-bottom:8px}
+    .chan-duoi{padding:18px 0; text-align:center; font-size:13px; color:#8a8a8a}
+
+    /* Nút lên đầu trang */
+    #nut-len-dau{position:fixed; right:18px; bottom:110px; width:48px; height:48px; border-radius:50%; border:0; background:#dcdcdc; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.15)}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .luoi-san-pham{grid-template-columns:repeat(3,1fr)}
+      .luoi-tin{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:800px){
+      .thanh-tren{flex-wrap:wrap}
+      .danhmuc-chinh ul{gap:14px; overflow:auto}
+      .noi-dung-slide h1{font-size:32px}
+      .luoi-san-pham{grid-template-columns:repeat(2,1fr)}
+      .luoi-tin{grid-template-columns:1fr}
+      .chan-trang .noi-chan{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:480px){
+      .luoi-san-pham{grid-template-columns:1fr}
+      .trang-slide{height:300px}
+      .nut-prev,.nut-next{display:none}
+      .danhmuc-chinh ul{display:flex; gap:12px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================
+       HTML (PHẦN CẤU TRÚC)
+       ========================= -->
+
+  <!-- Thanh đầu -->
+  <header class="thanh-dau" role="banner">
+    <div class="khung thanh-tren">
+      <div class="thuong-hieu">
+        <div class="logo">SHOPDUNK</div>
+        <div class="dai-ly">Authorised Reseller</div>
+      </div>
+
+      <div class="khung-tim-kiem">
+        <input id="timKiem" placeholder="Bạn tìm gì..." aria-label="ô tìm kiếm" />
+      </div>
+
+      <div class="hanh-dong">
+        <button class="nut" aria-label="Giỏ hàng">🛒<span style="margin-left:6px">Giỏ hàng</span></button>
+        <button class="nut" aria-label="Tài khoản">👤<span style="margin-left:6px">Tài khoản</span></button>
+      </div>
+    </div>
+
+    <nav class="danhmuc-chinh khung" aria-label="Danh mục chính">
+      <ul>
+        <li><a href="#">iPhone</a></li>
+        <li><a href="#">iPad</a></li>
+        <li><a href="#">Mac</a></li>
+        <li><a href="#">Watch</a></li>
+        <li><a href="#">Phụ kiện</a></li>
+        <li><a href="#">Âm thanh</a></li>
+        <li><a href="#">Camera</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Khung quảng cáo / Slider -->
+  <section class="khu-quang-cao khung" aria-label="Quảng cáo chính">
+    <div class="trinh-chieu" id="trinhChieu">
+      <div class="trang-slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=60')">
+        <div class="noi-dung-slide">
+          <h1>iPad Pro</h1>
+          <p>Hiệu năng AI tiên tiến và năng lực thay đổi cuộc chơi.</p>
+          <a class="btn-chinh" href="#">Đăng ký nhận thông tin</a>
+        </div>
+      </div>
+
+      <div class="trang-slide" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1600&q=60')">
+        <div class="noi-dung-slide">
+          <h1>MacBook</h1>
+          <p>Hiệu năng đột phá, thiết kế mỏng nhẹ.</p>
+          <a class="btn-chinh" href="#">Khám phá</a>
+        </div>
+      </div>
+
+      <div class="trang-slide" style="background-image: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=60')">
+        <div class="noi-dung-slide">
+          <h1>Apple Watch</h1>
+          <p>Giữ sức khỏe, kết nối không ngừng.</p>
+          <a class="btn-chinh" href="#">Xem chi tiết</a>
+        </div>
+      </div>
+
+      <button class="nut-prev" aria-label="Trước">‹</button>
+      <button class="nut-next" aria-label="Tiếp">›</button>
+      <div class="dau-cham" id="dauCham" role="tablist" aria-label="Điều khiển slide"></div>
+    </div>
+  </section>
+
+  <!-- Nội dung chính: sản phẩm + tin tức -->
+  <main class="khung noidung-chinh">
+
+    <!-- iPhone -->
+    <section class="khoi" aria-label="Danh sách iPhone">
+      <div class="khoi-dau">
+        <h2>iPhone</h2>
+        <a class="xem-tat-ca" href="#">Xem tất cả iPhone ➜</a>
+      </div>
+
+      <div class="luoi-san-pham" id="luoiIphone">
+        <article class="the-san-pham">
+          <div class="nhan moi">Mới</div>
+          <a class="thumb" href="#" title="iPhone 17 Pro Max 256GB"><img src="https://picsum.photos/seed/iphone1/400/300" alt="iPhone 17 Pro Max"></a>
+          <h3 class="tieu-de">iPhone 17 Pro Max 256GB</h3>
+          <div class="gia">
+            <span class="hientai">37,999,000₫</span>
+            <span class="cu">39,999,000₫</span>
+          </div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 0%</div>
+          <a class="thumb" href="#" title="iPhone 17 Pro 256GB"><img src="https://picsum.photos/seed/iphone2/400/300" alt="iPhone 17 Pro"></a>
+          <h3 class="tieu-de">iPhone 17 Pro 256GB</h3>
+          <div class="gia">
+            <span class="hientai">34,799,000₫</span>
+            <span class="cu">34,999,000₫</span>
+          </div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan moi">Mới</div>
+          <a class="thumb" href="#" title="iPhone 17 256GB"><img src="https://picsum.photos/seed/iphone3/400/300" alt="iPhone 17"></a>
+          <h3 class="tieu-de">iPhone 17 256GB</h3>
+          <div class="gia">
+            <span class="hientai">24,999,000₫</span>
+          </div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 3%</div>
+          <a class="thumb" href="#" title="iPhone Air 256GB"><img src="https://picsum.photos/seed/iphone4/400/300" alt="iPhone Air"></a>
+          <h3 class="tieu-de">iPhone Air 256GB</h3>
+          <div class="gia">
+            <span class="hientai">30,990,000₫</span>
+            <span class="cu">31,999,000₫</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="can-giua"><button class="nut-bo-tron">Xem tất cả iPhone</button></div>
+    </section>
+
+    <!-- iPad -->
+    <section class="khoi" aria-label="Danh sách iPad">
+      <div class="khoi-dau">
+        <h2>iPad</h2>
+        <a class="xem-tat-ca" href="#">Xem tất cả iPad ➜</a>
+      </div>
+
+      <div class="luoi-san-pham">
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 20%</div>
+          <a class="thumb" href="#" title="iPad Air"><img src="https://picsum.photos/seed/ipad1/400/300" alt="iPad Air"></a>
+          <h3 class="tieu-de">iPad Air (M3) 11 inch</h3>
+          <div class="gia"><span class="hientai">13,490,000₫</span><span class="cu">16,999,000₫</span></div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 16%</div>
+          <a class="thumb" href="#" title="iPad A16"><img src="https://picsum.photos/seed/ipad2/400/300" alt="iPad A16"></a>
+          <h3 class="tieu-de">iPad (A16) 11 inch</h3>
+          <div class="gia"><span class="hientai">8,390,000₫</span><span class="cu">9,999,000₫</span></div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 26%</div>
+          <a class="thumb" href="#" title="iPad M2"><img src="https://picsum.photos/seed/ipad3/400/300" alt="iPad M2"></a>
+          <h3 class="tieu-de">iPad Air M2 13 inch</h3>
+          <div class="gia"><span class="hientai">16,190,000₫</span><span class="cu">21,990,000₫</span></div>
+        </article>
+
+        <article class="the-san-pham">
+          <div class="nhan giam">Giảm 35%</div>
+          <a class="thumb" href="#" title="iPad Gen 10"><img src="https://picsum.photos/seed/ipad4/400/300" alt="iPad Gen 10"></a>
+          <h3 class="tieu-de">iPad Gen 10 10.9 inch</h3>
+          <div class="gia"><span class="hientai">8,390,000₫</span><span class="cu">12,990,000₫</span></div>
+        </article>
+      </div>
+      <div class="can-giua"><button class="nut-bo-tron">Xem tất cả iPad</button></div>
+    </section>
+
+    <!-- Newsfeed -->
+    <section class="khoi" aria-label="Newsfeed">
+      <h2>Newsfeed</h2>
+      <div class="luoi-tin">
+        <article class="the-tin"><img src="https://picsum.photos/seed/news1/800/400" alt="tin1"><h3>Chạm đỉnh trải nghiệm cùng Apple Watch Ultra 3</h3><time>14/10/2025</time></article>
+        <article class="the-tin"><img src="https://picsum.photos/seed/news2/800/400" alt="tin2"><h3>Apple Watch SE 3 – Nâng cấp toàn diện</h3><time>14/10/2025</time></article>
+        <article class="the-tin"><img src="https://picsum.photos/seed/news3/800/400" alt="tin3"><h3>Khám phá Apple Watch Series 11</h3><time>14/10/2025</time></article>
+      </div>
+      <div class="can-giua"><button class="nut-bo-tron">Xem tất cả Tin Tức</button></div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="chan-trang" role="contentinfo">
+    <div class="khung noi-chan">
+      <div>
+        <div class="logo" style="color:#fff">SHOPDUNK</div>
+        <p style="color:#cfcfcf">Năm 2020, ShopDunk trở thành đại lý ủy quyền của Apple. Chúng tôi phát triển chuỗi cửa hàng tiêu chuẩn ...</p>
+      </div>
+
+      <div>
+        <h4>Thông tin</h4>
+        <ul style="color:#cfcfcf; padding-left:0; list-style:none">
+          <li>Newsfeed</li>
+          <li>Giới thiệu</li>
+          <li>Check IMEI</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Chính sách</h4>
+        <ul style="color:#cfcfcf; padding-left:0; list-style:none">
+          <li>Thu cũ đổi mới</li>
+          <li>Giao hàng</li>
+          <li>Đổi trả</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Địa chỉ & Liên hệ</h4>
+        <p style="color:#cfcfcf">Mua hàng: <strong>1900.6626</strong></p>
+        <p style="color:#cfcfcf">Bảo hành: <strong>1900.8036</strong></p>
+      </div>
+    </div>
+
+    <div class="chan-duoi khung">© 2025 ShopDunk Clone Demo</div>
+  </footer>
+
+  <button id="nut-len-dau" title="Lên đầu trang" aria-label="lên đầu trang">↑</button>
+
+  <!-- =========================
+       JS (PHẦN HÀNH VI)
+       ========================= -->
+  <script>
+    /* ===== Trình chiếu (slider) ===== */
+    (function(){
+      const slides = [...document.querySelectorAll('#trinhChieu .trang-slide')];
+      const nutPrev = document.querySelector('.nut-prev');
+      const nutNext = document.querySelector('.nut-next');
+      const dauChamWrap = document.getElementById('dauCham');
+      let chiSo = 0, timer = null;
+
+      // Tạo chấm điều khiển
+      slides.forEach((s,i)=>{
+        const btn = document.createElement('button');
+        btn.setAttribute('aria-label', 'Slide ' + (i+1));
+        btn.addEventListener('click', ()=> chuyenTo(i));
+        if(i===0) btn.classList.add('active');
+        dauChamWrap.appendChild(btn);
+      });
+      const dauCham = [...dauChamWrap.children];
+
+      function hienThi(i){
+        slides.forEach(s=> s.classList.remove('active'));
+        dauCham.forEach(d=> d.classList.remove('active'));
+        slides[i].classList.add('active');
+        dauCham[i].classList.add('active');
+      }
+
+      function chuyenTo(i){ chiSo = i; hienThi(chiSo); datLaiTimer(); }
+      function truoc(){ chiSo = (chiSo - 1 + slides.length) % slides.length; hienThi(chiSo); datLaiTimer(); }
+      function sau(){ chiSo = (chiSo + 1) % slides.length; hienThi(chiSo); datLaiTimer(); }
+
+      if(nutPrev) nutPrev.addEventListener('click', truoc);
+      if(nutNext) nutNext.addEventListener('click', sau);
+
+      function batDau(){ timer = setInterval(()=> sau(), 5000); }
+      function datLaiTimer(){ clearInterval(timer); batDau(); }
+
+      batDau();
+    })();
+
+    /* ===== Nút lên đầu trang ===== */
+    (function(){
+      const nut = document.getElementById('nut-len-dau');
+      window.addEventListener('scroll', ()=>{
+        if(window.scrollY > 400) nut.style.display = 'flex';
+        else nut.style.display = 'none';
+      });
+      nut.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    })();
+
+    /* ===== Placeholder: tương tác nhỏ cho thẻ sản phẩm ===== */
+    document.querySelectorAll('.the-san-pham .thumb').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>{
+        // đây là chỗ bạn có thể thêm tooltip / quick-view
+      });
+    });
+
+    /* ===== Hỗ trợ bàn phím cho slider (trái/phải) ===== */
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft'){
+        const prev = document.querySelector('.nut-prev');
+        if(prev) prev.click();
+      }
+      if(e.key === 'ArrowRight'){
+        const next = document.querySelector('.nut-next');
+        if(next) next.click();
+      }
+    });
+  </script>
+</body>
+</html>
