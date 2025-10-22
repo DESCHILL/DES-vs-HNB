@@ -124,3 +124,48 @@
     // initial
     renderCards(products);
     updateCartUI();
+
+    // ==== BANNER SLIDER ====
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+function showSlide(index) {
+  if (index >= slides.length) slideIndex = 0;
+  if (index < 0) slideIndex = slides.length - 1;
+
+  slides.forEach((slide, i) => {
+    slide.style.display = i === slideIndex ? "block" : "none";
+    dots[i].classList.toggle("active", i === slideIndex);
+  });
+}
+
+function nextSlide() {
+  slideIndex++;
+  showSlide(slideIndex);
+}
+
+function prevSlideFunc() {
+  slideIndex--;
+  showSlide(slideIndex);
+}
+
+next.addEventListener("click", nextSlide);
+prev.addEventListener("click", prevSlideFunc);
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    slideIndex = i;
+    showSlide(slideIndex);
+  });
+});
+
+// Tự động chuyển slide
+setInterval(() => {
+  slideIndex++;
+  showSlide(slideIndex);
+}, 4000);
+
+// Khởi tạo
+showSlide(slideIndex);
