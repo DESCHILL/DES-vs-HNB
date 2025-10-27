@@ -1,6 +1,6 @@
 /* gioHang.js - sửa để nút "Thanh toán" chuyển sang trang thanh toán
    - Lưu tạm giỏ vào sessionStorage (key: donHangTam)
-   - Chuyển trang sang ../thanh-toan/thanhToan.html (theo cấu trúc thư mục của bạn)
+   - Chuyển trang sang ../thanh-toan/thanhToan.html 
    - Bao ngoài DOMContentLoaded để tránh lỗi khi phần tử chưa tồn tại
 */
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderNoiDung(gio);
   }
 
-  // Render nội dung chính: nếu rỗng hiển thị trạng thái rỗng, ngược lại hiển thị danh sách
+  // Render nội dung chính: 
   function renderNoiDung(gio){
     const el = document.getElementById('noidung');
     if(!el) return; // an toàn nếu element không tồn tại
@@ -125,16 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!gio || gio.length === 0){
           alert('Giỏ hàng trống'); return;
         }
-        // Lưu tạm (thanhToan page có thể đọc)
+        // Lưu tạm 
         try { sessionStorage.setItem('donHangTam', JSON.stringify(gio)); } catch(e){}
-        // Chuyển trang: từ thư mục `gio-hang/` sang `thanh-toan/` cùng cấp => ../thanh-toan/thanhToan.html
+        //  từ thư mục `gio-hang/` sang `thanh-toan/` cùng cấp => ../thanh-toan/thanhToan.html
         window.location.href = '../thanh-toan/thanhToan.html';
       });
     }
 
     document.getElementById('tiepTucMua')?.addEventListener('click', ()=>{ 
-      // ví dụ quay về trang chủ (bạn sửa theo thực tế)
-      window.location.href = '../home1/homee.html'; // thay theo đường dẫn trang sản phẩm của bạn
+      // ví dụ quay về trang chủ
+      window.location.href = '../home1/homee.html'; 
     });
   }
 
@@ -163,12 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function xoaToanBo(){ localStorage.removeItem(KHOA); renderTatCa(); }
   function thanhToan(){ const gio = taiGio(); if(gio.length===0){ alert('Giỏ hàng trống'); return } alert('Chức năng thanh toán demo — tổng: '+ dinhDangVND(gio.reduce((s,i)=>s+i.soLuong*i.gia,0))); }
 
-  // Header buttons (nếu cần hành động)
+  // Header buttons 
   const btnGio = document.getElementById('btnGio');
   if(btnGio){
     btnGio.addEventListener('click', function(e){
       // nếu muốn chuyển tới chính trang giỏ: dùng đường dẫn đúng
-      // window.location.href = './gio-hang/gioHang.html'; // hoặc '#noidung' để scroll
+      
       // hiện để scroll nội dung:
       // document.getElementById('noidung')?.scrollIntoView({behavior:'smooth'});
     });
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Khởi tạo demo: thêm một vài sản phẩm nếu giỏ rỗng (bỏ đoạn này nếu bạn muốn trang bắt đầu rỗng)
+  // Khởi tạo demo: thêm một vài sản phẩm nếu giỏ rỗng 
   (function khoiTaoDemo(){
     const g = taiGio();
     if(g.length===0){
