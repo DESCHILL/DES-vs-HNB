@@ -10,8 +10,8 @@
   <!-- Header + Menu -->
   <header>
     <div class="thanh-tren">
-      <!-- Logo có thể click về trang chủ -->
-      <a class="logo" href="index.html" aria-label="Về trang chủ">
+      <!-- Logo  -->
+      <a class="logo" href="../home1/homee.html" aria-label="Về trang chủ">
         <div class="vuong">68</div>
         <div style="font-weight:700">Shop68IT1</div>
       </a>
@@ -19,7 +19,7 @@
       <div class="tim-kiem">
         <input placeholder="Tìm sản phẩm, điện thoại, laptop..." aria-label="Tìm kiếm" />
 
-        <a id="btnGio" class="nut-gio" href="#" title="Xem giỏ hàng">
+        <a id="btnGio" class="nut-gio" href="../gio-hang/gioHang.html" title="Xem giỏ hàng">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 6h15l-1.2 6.3A2 2 0 0 1 17.9 14H9.6" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="19" r="1.4" fill="#111827"/><circle cx="18" cy="19" r="1.4" fill="#111827"/></svg>
           <span>Giỏ hàng</span>
         </a>
@@ -66,7 +66,7 @@
             </div>
             <div class="field">
               <label for="dienThoai">Số điện thoại <span style="color:var(--danger)">*</span></label>
-              <!-- Thêm maxlength để giới hạn tối đa, và JS sẽ ép chỉ chữ số -->
+            
               <input type="tel" id="dienThoai" name="dienThoai" placeholder="0xxxxxxxx" maxlength="11" />
               <div class="bao-loi" id="loi-dienThoai">Vui lòng nhập số điện thoại (8–11 chữ số)</div>
             </div>
@@ -90,9 +90,9 @@
               <label for="tinh">Tỉnh/Thành <span style="color:var(--danger)">*</span></label>
               <select id="tinh" name="tinh">
                 <option value="">-- Chọn tỉnh, thành --</option>
-                <option value="hn">Hà Nội</option>
-                <option value="hcm">TP. Hồ Chí Minh</option>
-                <option value="dn">Đà Nẵng</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="TP.Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
               </select>
               <div class="bao-loi" id="loi-tinh">Vui lòng chọn tỉnh/thành</div>
             </div>
@@ -100,9 +100,9 @@
               <label for="quan">Quận/Huyện <span style="color:var(--danger)">*</span></label>
               <select id="quan" name="quan">
                 <option value="">-- Chọn quận/huyện --</option>
-                <option value="q1">Quận 1</option>
-                <option value="q7">Quận 7</option>
-                <option value="bd">Bình Dương</option>
+                <option value="Quận 1">Quận 1</option>
+                <option value="Quận 7">Quận 7</option>
+                <option value="Bình Dương">Bình Dương</option>
               </select>
               <div class="bao-loi" id="loi-quan">Vui lòng chọn quận/huyện</div>
             </div> 

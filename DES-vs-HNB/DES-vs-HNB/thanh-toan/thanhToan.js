@@ -102,7 +102,7 @@
       return hopLe;
     }
 
-    // Khi bấm nút xác nhận: validate, nếu ok thì chuyển sang trang chuyenkhoan.html
+    // Khi bấm nút xác nhận: validate, nếu ok thì chuyển sang trang demoHoaDon.html
     document.getElementById('nut-xac-nhan').addEventListener('click', function(){
       // Xóa các lỗi hiện tại
       document.querySelectorAll('.bao-loi').forEach(el=>el.classList.remove('hien'));
@@ -128,7 +128,7 @@
       } catch(e){ /* nếu trình duyệt chặn storage, vẫn chuyển trang */ }
 
       // Chuyển sang trang chuyển khoản (không submit form server-side ở đây)
-      window.location.href = 'chuyenkhoan.html';
+      window.location.href = '../demo-hoa-don/demoHoaDon.html';
     });
 
     // Nút quay lại giỏ hàng
