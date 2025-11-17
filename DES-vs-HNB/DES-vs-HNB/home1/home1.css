@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* RESET */
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
 * {
   box-sizing: border-box;
   margin: 0;
@@ -33,6 +37,7 @@ body {
   padding: 0 16px
 }
 
+<<<<<<< HEAD
 .login{
       margin-left:5px;padding:5px 10px;border-radius:8px;border:0;background:#fcfcfc;color:#000000
     }
@@ -40,6 +45,8 @@ body {
       background:#ce6a6a;
       color: #ffffff;
     }
+=======
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
 header {
   background: #fff;
   box-shadow: 0 1px 4px rgba(16, 24, 40, .06);
@@ -65,7 +72,11 @@ header {
 }
 
 .logo .mark {
+<<<<<<< HEAD
   background: linear-gradient(90deg, #1cbec49d, #95bfdb);
+=======
+  background: linear-gradient(90deg, #ff6b6b, #ff9a3c);
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
   color: #fff;
   padding: 8px 10px;
   border-radius: 6px
@@ -105,10 +116,13 @@ header {
   border-radius: 8px;
   cursor: pointer
 }
+<<<<<<< HEAD
 .icon-btn:hover {
   background: #9c9d9e;
   color: #fff
 } 
+=======
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
 
 /* nav */
 nav.main-nav {
@@ -242,6 +256,7 @@ nav.main-nav {
   gap: 8px
 }
 
+<<<<<<< HEAD
 .card .actions button{
       flex:1;
       padding:10px;
@@ -252,6 +267,8 @@ nav.main-nav {
     .card .actions .buy-btn{background:#0f1724;color:#fff}
     .card .actions .buy-btn:hover{background:#23334e}
 
+=======
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
 /* Quick view modal */
 .modal {
   position: fixed;
@@ -385,6 +402,7 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: contain;
+<<<<<<< HEAD
   background-color: #ffffff;
   display: block;
 }
@@ -393,6 +411,18 @@ footer {
 
 
 
+=======
+  background-color: #000;
+  display: block;
+}
+
+.banner {
+  height: 60vh;
+}
+
+
+
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
 .prev,
 .next {
   position: absolute;
@@ -441,3 +471,9 @@ footer {
 .dot.active {
   background-color: #0071e3;
 }
+<<<<<<< HEAD
+=======
+
+/* ==== END BANNER SLIDER ==== */
+/* DARK MODE & LOGOUT BUTTON */
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683

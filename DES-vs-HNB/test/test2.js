@@ -155,6 +155,7 @@
       alert('Chức năng Tài khoản (demo)');
     });
 
+<<<<<<< HEAD
     // Khởi tạo demo: thêm một vài sản phẩm nếu giỏ rỗng (bỏ đoạn này nếu bạn muốn trang bắt đầu rỗng)
     (function khoiTaoDemo(){
       const g = taiGio();
@@ -163,3 +164,6 @@
         themMatHang('p2',2);
       } else renderTatCa();
     })();
+=======
+
+>>>>>>> 3aa972c16af1ff2d71ac1e0eaa815adec7436683
