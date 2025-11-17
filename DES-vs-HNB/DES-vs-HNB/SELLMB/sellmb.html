@@ -4,26 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop 68IT1 </title>
-  <link rel="stylesheet" href="home1.css" />
+  <link rel="stylesheet" href="sellmb.css" />
 </head>
 <body>
   <div class="topbar">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
-      <div>Giao hàng nhanh — Support: 1900 1009</div>
-      <div>Đăng nhập / Đăng ký</div>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center ;">
+      <div>Giao hàng nhanh — Support: 1900 1009 </div>
+      <div> 
+        <button class="login"> Đăng nhập</button> 
+        <button class="login" > Đăng ký</button> 
+      </div>
     </div>
   </div>
 
   <header>
     <div class="container head-main">
-      <div class="logo"><div class="mark">SH</div><div>Shop68IT1</div></div>
+      <div class="logo"><a href="http://127.0.0.1:5500/DES-vs-HNB/DES-vs-HNB/home1/home1.html"><div class="mark">SH</div></a><div>Shop68IT1</div></div>
       <div class="search">
         <input id="q" placeholder="Tìm điện thoại, laptop, linh kiện..." />
-        <button id="searchBtn">Tìm kiếm</button>
+        <button class="icon-btn" id="searchBtn">Tìm kiếm</button>
       </div>
       <div class="nav-actions">
         <button class="icon-btn" id="favBtn">Yêu thích</button>
-        <button class="icon-btn" id="cartBtn">Giỏ (<span id="cartCount">0</span>)</button>
+        <a href="http://127.0.0.1:5500/DES-vs-HNB/DES-vs-HNB/gio-hang/gioHang.html"></a><button class="icon-btn" id="cartBtn">Giỏ hàng (<span id="cartCount">0</span>)</button>
       </div>
     </div>
     <nav class="main-nav">
@@ -32,58 +35,40 @@
         <a href="#">Laptop</a>
         <a href="#">PC</a>
         <a href="#">Phụ kiện</a>
-        <a href="#">Tin tức</a>
         <a href="#">Khuyến mãi</a>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <!-- ==== BANNER ==== -->
-    <section class="banner">
-      <div class="slides">
-        <div class="slide active">
-          <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" alt="iPhone 16 Pro Max">
-        </div>
-        <div class="slide">
-          <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/thang%2010%20_3/danh%20m%E1%BB%A5c-ip_Danh%20m%E1%BB%A5c.png" alt="iPad Pro M4">
-        </div>
-        <div class="slide">
-          <img src="https://shopdunk.com/images/uploaded/15.%20camera%20iPhone%2015/banner%20iP17pro-%C4%90C2_Danh%20m%E1%BB%A5c.png" alt="MacBook Air M3">
-        </div>
       </div>
-
-      <!-- Nút điều hướng -->
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
-
-      <!-- Dấu chấm -->
-      <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </section>
-
-
+      
     <section id="products">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
-        <h2>Sản phẩm nổi bật</h2>
-        <div>
+      <div class="menumb" style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;width: auto;border-top: 1px solid #eef2f7;
+  border-bottom: 1px solid #eef2f7">
+        <a href="#">Iphone</a>
+        <a href="#">Samsung</a>
+        <a href="#">Xiaomi</a>
+        <a href="#">Oppo</a>
+      </div>
+      <div>
           <select id="sort">
             <option value="popular">Phổ biến</option>
             <option value="price-asc">Giá: thấp → cao</option>
             <option value="price-desc">Giá: cao → thấp</option>
           </select> 
-        </div>
       </div>
+    </div>
 
       <div class="grid" id="grid">
         <!-- Product cards injected by JS -->
       </div>
     </section>
 
-    <footer style="justify-content:space-between; background-color: black;">
+
+  </main>
+
+   <footer style="justify-content:space-between; background-color: black;">
       <div  class="container" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap ; ">
         <div style="min-width:220px">
           <h3>Shop68IT1</h3>
@@ -99,8 +84,7 @@
         </div>
       </div>
     </footer>
-  </main>
-
+   
   <!-- Modal quick view -->
   <div class="modal" id="modal">
     <div class="modal-content">
@@ -129,6 +113,6 @@
     </div>
     <div style="margin-top:10px;display:flex;gap:8px"><button class="btn" id="checkout">Thanh toán</button><button class="icon-btn" id="clearCart">Xóa</button></div>
   </div>
-  <script src="home1.js"></script>
+  <script src="sellmb.js"></script>
 </body>
 </html>

@@ -143,7 +143,7 @@
     function xoaToanBo(){ localStorage.removeItem(KHOA); renderTatCa(); }
     function thanhToan(){ const gio = taiGio(); if(gio.length===0){ alert('Giỏ hàng trống'); return } alert('Chức năng thanh toán demo — tổng: '+ dinhDangVND(gio.reduce((s,i)=>s+i.soLuong*i.gia,0))); }
 
-    // Khi bấm nút Giỏ hàng bên header: chuyển tới trang giỏ ,chú ý code html cũng chưa thay đổi phần này
+    // Khi bấm nút Giỏ hàng bên header: chuyển tới trang giỏ ,chú ý code html cũng chưa thay đổi phần này(tao thay đổi r)
     document.getElementById('btnGio').addEventListener('click', function(e){
       // e.preventDefault();
       // document.getElementById('noidung').scrollIntoView({behavior: 'smooth'});

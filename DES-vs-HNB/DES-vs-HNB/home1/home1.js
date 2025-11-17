@@ -169,3 +169,38 @@ setInterval(() => {
 
 // Khởi tạo
 showSlide(slideIndex);
+
+
+// cart bổ sung
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartBtn = document.querySelector(".btn");
+
+  addToCartBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const product = {
+      id: "chair-1",
+      name: "Arto Recline",
+      price: 199,
+      oldPrice: 259,
+      image: "https://cdn.pixabay.com/photo/2017/03/27/14/56/chair-2179043_1280.jpg",
+      quantity: 1,
+    };
+
+    // Lấy giỏ hàng hiện tại
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Kiểm tra nếu sp đã có thì tăng số lượng
+    const existingProduct = cart.find((p) => p.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Đã thêm vào giỏ hàng!");
+  });
+});
+
