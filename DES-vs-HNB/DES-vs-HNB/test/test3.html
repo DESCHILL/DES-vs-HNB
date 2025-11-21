@@ -1,28 +1,110 @@
-<!DOCTYPE html>
-<html lang="eng" >
+<!doctype html>
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>3D Card Hover Effect | @coding.stella</title>
-  <link rel="stylesheet" href="test3.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f7;
+    }
+    .topbar {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+    }
 
+    .login-container {
+      max-width: 420px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    .login-container h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #1d1d1f;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    label { display: block; margin-bottom: 6px; font-weight: bold; }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #0071e3;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover { background: #005bb5; }
+
+    .error-text {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="wrapper">
-      <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="cover-image" />
+  <div class="topbar">Admin Panel</div>
+
+  <div class="login-container">
+    <h2>Đăng nhập Admin</h2>
+
+    <div class="form-group">
+      <label>Tên đăng nhập</label>
+      <input id="username" type="text" placeholder="admin" />
     </div>
-    <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="title" />
-    <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="character" />
+
+    <div class="form-group">
+      <label>Mật khẩu</label>
+      <input id="password" type="password" placeholder="••••••••" />
+    </div>
+
+    <button class="btn" onclick="login()">Đăng nhập</button>
+    <div id="errorMsg" class="error-text">Sai tài khoản hoặc không có quyền truy cập!</div>
   </div>
 
-  <div class="card">
-    <div class="wrapper">
-      <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="cover-image" />
-    </div>
-    <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="title" />
-    <img src="https://shopdunk.com/images/uploaded/banner/Banner%202025/Tha%CC%81ng%2010/banner%20iP17-%C4%90C_Danh%20m%E1%BB%A5c.png" class="character" />
-  </div>
-  
+  <script>
+    const adminMock = {
+      username: "admin",
+      password: "admin123",
+      role: "admin"
+    };
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (user === adminMock.username && pass === adminMock.password) {
+        if (adminMock.role === "admin") {
+          window.location.href = "admin-dashboard.html";
+        }
+      } else {
+        errorMsg.style.display = "block";
+      }
+    }
+  </script>
+
 </body>
 </html>
